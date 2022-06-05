@@ -57,11 +57,30 @@ setTimeout(function(){
 }
 
 }
-  else console.log("wrong");
+  else {
+
+    console.log("wrong");
+
+    playSound("wrong");
+
+    $("body").addClass("game-over");
+
+    setTimeout(function(){
+          $("body").removeClass("game-over");
+      }, 200)
+
+    $("h1").text("Game Over, Press Any Key to Restart");
+
+startOver();
+
+  }
+
+
+
 };
 
 function nextSequence () {
-
+userClickedPattern =[];
   var randomNumber = Math.floor(Math.random()*4);
   var randomChosenColour = buttonColours[randomNumber];
 
@@ -76,7 +95,11 @@ level++;
 }
 
 
-
+function startOver() {
+  started = false;
+  level = 0;
+  gamePattern =[];
+}
 
 
 
